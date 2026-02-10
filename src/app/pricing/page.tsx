@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Zap, ArrowRight, Sparkles } from "lucide-react";
+import { Check, Zap, Sparkles } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { GridBackground } from "@/components/GlowOrb";
 
@@ -10,9 +10,8 @@ const plans = [
     name: "Spark",
     price: 29,
     desc: "For individuals getting started with AI",
-    vm: "CX23 (2 vCPU, 4GB RAM)",
+    vm: "Standard VM",
     tokens: "3M tokens/month",
-    markup: "50% on extra tokens",
     features: [
       "Personal AI assistant",
       "WhatsApp integration",
@@ -26,9 +25,8 @@ const plans = [
     name: "Flow",
     price: 59,
     desc: "For developers who build daily",
-    vm: "CX33 (4 vCPU, 8GB RAM)",
+    vm: "Enhanced VM",
     tokens: "15M tokens/month",
-    markup: "30% on extra tokens",
     features: [
       "Everything in Spark",
       "Smart model routing",
@@ -43,9 +41,8 @@ const plans = [
     name: "Surge",
     price: 99,
     desc: "For power users and small teams",
-    vm: "CX43 (8 vCPU, 16GB RAM)",
+    vm: "Performance VM",
     tokens: "50M tokens/month",
-    markup: "15% on extra tokens",
     features: [
       "Everything in Flow",
       "Unlimited Builder projects",
@@ -53,7 +50,6 @@ const plans = [
       "Advanced analytics",
       "Priority support",
       "API access",
-      "Custom model routing",
     ],
     popular: false,
   },
@@ -61,17 +57,14 @@ const plans = [
     name: "Nova",
     price: 199,
     desc: "For enterprises and heavy workloads",
-    vm: "Dedicated (custom config)",
+    vm: "Dedicated (custom)",
     tokens: "100M tokens/month",
-    markup: "10% on extra tokens",
     features: [
       "Everything in Surge",
       "Dedicated VM resources",
       "SLA guarantee (99.9%)",
       "Custom integrations",
       "Dedicated support",
-      "On-premise option",
-      "Audit logs",
       "Team management",
     ],
     popular: false,
@@ -81,7 +74,7 @@ const plans = [
 const faq = [
   {
     q: "What happens when I exceed my token limit?",
-    a: "You can keep using the platform — extra tokens are charged at your plan's markup rate. No surprise cutoffs.",
+    a: "You can keep using the platform — extra tokens are charged at a reasonable rate. No surprise cutoffs.",
   },
   {
     q: "Can I switch plans anytime?",
@@ -89,7 +82,7 @@ const faq = [
   },
   {
     q: "What models can I use?",
-    a: "All plans include access to 100+ models: Claude, GPT, Gemini, Llama, DeepSeek, and more. Smart routing picks the best one for your task.",
+    a: "All plans include access to multiple AI models: Claude, GPT, Gemini, and more. Smart routing picks the best one for your task.",
   },
   {
     q: "Is my data private?",
@@ -101,7 +94,7 @@ const faq = [
   },
   {
     q: "What about the Builder feature?",
-    a: "Builder lets you create webapps with prompts. AI generates code, pushes to your GitHub, and deploys to Vercel automatically.",
+    a: "Builder lets you create webapps with prompts. AI generates code, pushes to your GitHub, and deploys automatically.",
   },
 ];
 
@@ -119,7 +112,6 @@ export default function PricingPage() {
             </h1>
             <p className="text-lg text-white/50 max-w-2xl mx-auto">
               No hidden fees. No surprise charges. Pick a plan and own your AI.
-              Break-even at just 24 customers.
             </p>
           </motion.div>
         </div>
@@ -162,10 +154,6 @@ export default function PricingPage() {
                     <Zap className="w-4 h-4 text-synapsis-400" />
                     {plan.tokens}
                   </div>
-                  <div className="flex items-center gap-2 text-white/60">
-                    <Zap className="w-4 h-4 text-synapsis-400" />
-                    {plan.markup}
-                  </div>
                 </div>
                 <div className="border-t border-white/10 pt-6 mb-8 flex-1">
                   <ul className="space-y-3">
@@ -190,34 +178,6 @@ export default function PricingPage() {
             </StaggerItem>
           ))}
         </StaggerContainer>
-      </section>
-
-      {/* Unit Economics */}
-      <section className="section-padding">
-        <div className="max-w-4xl mx-auto">
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center mb-12">
-              <span className="gradient-text">Unit economics</span> that work
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { label: "Gross Margin", value: "52%", desc: "Average across all plans" },
-                { label: "Break-even", value: "24", desc: "Customers needed to cover costs" },
-                { label: "LTV:CAC", value: "21:1", desc: "World-class ratio (unicorn-level)" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass rounded-2xl p-8 text-center"
-                >
-                  <div className="text-4xl font-black gradient-text mb-2">{stat.value}</div>
-                  <div className="text-sm font-semibold mb-1">{stat.label}</div>
-                  <div className="text-xs text-white/40">{stat.desc}</div>
-                </motion.div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
       </section>
 
       {/* FAQ */}

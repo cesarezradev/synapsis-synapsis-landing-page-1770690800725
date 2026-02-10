@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import {
-  Smartphone, Server, Cloud, Database, Shield, Zap,
+  Smartphone, Server, Cloud, Shield, Zap,
   ArrowDown, ArrowRight, Layers, Globe, Lock, Cpu
 } from "lucide-react";
-import { FadeIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/AnimatedSection";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { GridBackground } from "@/components/GlowOrb";
 
 const layers = [
@@ -14,48 +14,46 @@ const layers = [
     subtitle: "React Native + Expo",
     icon: Smartphone,
     color: "from-blue-500 to-cyan-500",
-    items: ["6 tabs: Chat, Files, Tasks, Builder, Diagnostics, Settings", "WebSocket real-time streaming", "Model & thinking level selection", "Dark/light themes", "OAuth GitHub integration"],
+    items: ["6 screens: Chat, Files, Tasks, Builder, Diagnostics, Settings", "Real-time streaming via WebSocket", "Model & thinking level selection", "Dark/light themes"],
   },
   {
     title: "User VM",
-    subtitle: "Hetzner Cloud (CX23-CX43)",
+    subtitle: "Cloud Virtual Machine",
     icon: Server,
     color: "from-purple-500 to-violet-500",
-    items: ["OpenClaw AI Gateway", "Synapsis Backend (Express + TS)", "LanceDB Vector Database", "RAG System (auto-capture + recall)", "File storage & management"],
+    items: ["AI Gateway", "Backend Services", "Vector Database for RAG", "File storage & management"],
   },
   {
     title: "Gateway API",
     subtitle: "Smart Model Router",
     icon: Zap,
     color: "from-orange-500 to-amber-500",
-    items: ["Task classification (Gemini Flash)", "Route to optimal model per task", "Token accounting & billing", "Circuit breaker & failover", "Response caching (Redis)"],
+    items: ["Task classification", "Route to optimal model per task", "Token accounting & billing", "Failover & resilience"],
   },
   {
     title: "Infrastructure",
     subtitle: "Cloud + Security",
     icon: Cloud,
     color: "from-emerald-500 to-teal-500",
-    items: ["Cloudflare Tunnels (zero-trust)", "AWS Lambda provisioning", "Supabase Auth + PostgreSQL", "AES-256-GCM token encryption", "DDoS protection & CDN"],
+    items: ["Zero-trust networking", "Serverless provisioning", "Encrypted storage", "DDoS protection & CDN"],
   },
 ];
 
 const models = [
-  { name: "Claude Opus 4.6", provider: "Anthropic", tier: "Smart", price: "$5 / $25" },
-  { name: "Claude Sonnet 4.5", provider: "Anthropic", tier: "Regular", price: "$3 / $15" },
-  { name: "Claude Haiku 4", provider: "Anthropic", tier: "Fast", price: "$0.50 / $2.50" },
-  { name: "GPT-4o", provider: "OpenAI", tier: "Regular", price: "$2.50 / $10" },
-  { name: "GPT-4o-mini", provider: "OpenAI", tier: "Fast", price: "$0.15 / $0.60" },
-  { name: "Gemini 2.5 Pro", provider: "Google", tier: "Regular", price: "$1.25 / $10" },
-  { name: "Gemini 2.0 Flash", provider: "Google", tier: "Fast", price: "$0.10 / $0.40" },
-  { name: "DeepSeek-V3.1", provider: "DeepSeek", tier: "Fast", price: "$0.60 / $1.70" },
-  { name: "Llama 4 Maverick", provider: "Meta", tier: "Fast", price: "$0.27 / $0.85" },
+  { name: "Claude Opus", provider: "Anthropic", tier: "Smart", desc: "Complex reasoning" },
+  { name: "Claude Sonnet", provider: "Anthropic", tier: "Regular", desc: "Balanced performance" },
+  { name: "Claude Haiku", provider: "Anthropic", tier: "Fast", desc: "Quick responses" },
+  { name: "GPT-4o", provider: "OpenAI", tier: "Regular", desc: "Multimodal tasks" },
+  { name: "GPT-4o-mini", provider: "OpenAI", tier: "Fast", desc: "Affordable quality" },
+  { name: "Gemini Pro", provider: "Google", tier: "Regular", desc: "Long context" },
+  { name: "Gemini Flash", provider: "Google", tier: "Fast", desc: "Ultra-fast" },
 ];
 
 const securityLayers = [
-  { icon: Globe, title: "Network Isolation", desc: "Deny-all ingress, allowlist egress per VM" },
+  { icon: Globe, title: "Network Isolation", desc: "Each user runs in their own isolated environment" },
   { icon: Lock, title: "Token Security", desc: "AES-256-GCM encryption, auto-refresh, never exposed" },
-  { icon: Shield, title: "Code Scanning", desc: "SAST + secrets detection + dependency audit" },
-  { icon: Cpu, title: "VM Isolation", desc: "Each user runs in their own Hetzner VM" },
+  { icon: Shield, title: "Security Scanning", desc: "Automated security checks and monitoring" },
+  { icon: Cpu, title: "VM Isolation", desc: "Complete separation between users" },
 ];
 
 export default function ArchitecturePage() {
@@ -99,7 +97,7 @@ export default function ArchitecturePage() {
                         <h3 className="text-2xl font-bold">{layer.title}</h3>
                         <span className="text-sm text-white/40 font-mono">{layer.subtitle}</span>
                       </div>
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-3">
                         {layer.items.map((item, j) => (
                           <div key={j} className="flex items-start gap-2 text-sm text-white/60">
                             <Zap className="w-4 h-4 text-synapsis-400 mt-0.5 shrink-0" />
@@ -133,11 +131,10 @@ export default function ArchitecturePage() {
           <FadeIn>
             <p className="text-sm font-semibold text-cyan-400 uppercase tracking-widest mb-3 text-center">Model Router</p>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-              <span className="gradient-text">100+ models</span>, one smart API
+              <span className="gradient-text">Multiple models</span>, one smart API
             </h2>
             <p className="text-white/50 text-center max-w-2xl mx-auto mb-12">
-              Send any request. Our classifier picks the best model for cost and quality.
-              Prices shown as input / output per million tokens.
+              Send any request. Our classifier picks the best model for your task.
             </p>
           </FadeIn>
 
@@ -149,7 +146,7 @@ export default function ArchitecturePage() {
                     <th className="text-left px-6 py-4 text-white/40 font-medium">Model</th>
                     <th className="text-left px-6 py-4 text-white/40 font-medium">Provider</th>
                     <th className="text-left px-6 py-4 text-white/40 font-medium">Tier</th>
-                    <th className="text-left px-6 py-4 text-white/40 font-medium">Price (In/Out)</th>
+                    <th className="text-left px-6 py-4 text-white/40 font-medium">Best For</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -173,7 +170,7 @@ export default function ArchitecturePage() {
                           {m.tier}
                         </span>
                       </td>
-                      <td className="px-6 py-3 font-mono text-white/60">{m.price}</td>
+                      <td className="px-6 py-3 text-white/60">{m.desc}</td>
                     </motion.tr>
                   ))}
                 </tbody>
@@ -217,12 +214,11 @@ export default function ArchitecturePage() {
               {[
                 { step: "01", text: "User sends message from mobile app", color: "text-blue-400" },
                 { step: "02", text: "WebSocket delivers to user's VM", color: "text-cyan-400" },
-                { step: "03", text: "RAG enriches with context (190ms)", color: "text-purple-400" },
+                { step: "03", text: "RAG enriches with context", color: "text-purple-400" },
                 { step: "04", text: "Gateway classifies task type", color: "text-orange-400" },
-                { step: "05", text: "Routes to optimal LLM model", color: "text-yellow-400" },
+                { step: "05", text: "Routes to optimal AI model", color: "text-yellow-400" },
                 { step: "06", text: "Streams response back in real-time", color: "text-green-400" },
                 { step: "07", text: "Accounts tokens, updates billing", color: "text-emerald-400" },
-                { step: "08", text: "RAG captures important context", color: "text-violet-400" },
               ].map((item, i) => (
                 <motion.div
                   key={i}

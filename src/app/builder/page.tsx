@@ -5,7 +5,7 @@ import {
   MessageSquare, Code2, GitBranch, Rocket, Eye,
   Trash2, ArrowRight, Sparkles, Zap, CheckCircle2
 } from "lucide-react";
-import { FadeIn, ScaleIn, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { GridBackground } from "@/components/GlowOrb";
 
 const steps = [
@@ -18,7 +18,7 @@ const steps = [
   {
     icon: Code2,
     title: "AI Generates Code",
-    desc: "Claude Opus generates a complete Next.js + TypeScript + Tailwind project. Multiple files, proper structure.",
+    desc: "The AI generates a complete Next.js + TypeScript + Tailwind project. Multiple files, proper structure.",
     color: "from-purple-500 to-violet-500",
   },
   {
@@ -29,8 +29,8 @@ const steps = [
   },
   {
     icon: Rocket,
-    title: "Deploy to Vercel",
-    desc: "Auto-deploy via Vercel GitHub App. Your app gets a live preview URL instantly. Zero configuration.",
+    title: "Deploy Automatically",
+    desc: "Auto-deploy via your preferred platform. Your app gets a live preview URL instantly. Zero configuration.",
     color: "from-emerald-500 to-teal-500",
   },
   {
@@ -42,7 +42,7 @@ const steps = [
   {
     icon: Trash2,
     title: "Full Lifecycle",
-    desc: "Delete projects from the app — cleans up local storage, GitHub repo, and Vercel project in one tap.",
+    desc: "Delete projects from the app — cleans up local storage, repository, and deployment in one tap.",
     color: "from-red-500 to-orange-500",
   },
 ];
@@ -50,18 +50,11 @@ const steps = [
 const techStack = [
   { label: "Frontend Framework", value: "Next.js 14 + TypeScript" },
   { label: "Styling", value: "Tailwind CSS" },
-  { label: "AI Model", value: "Claude Opus 4.6 (via OpenClaw)" },
-  { label: "Version Control", value: "GitHub (OAuth Device Flow)" },
-  { label: "Deployment", value: "Vercel (auto-deploy on push)" },
+  { label: "AI Model", value: "Claude Opus" },
+  { label: "Version Control", value: "GitHub (OAuth)" },
+  { label: "Deployment", value: "Auto-deploy on push" },
   { label: "Token Encryption", value: "AES-256-GCM" },
-  { label: "Architecture", value: "3-layer (App → Backend → Builder API)" },
   { label: "Real-time", value: "WebSocket notifications" },
-];
-
-const examples = [
-  { name: "Financeiro", desc: "Personal finance tracker with charts and categories", files: 16, lines: 881 },
-  { name: "Receitas da Vovó", desc: "Recipe collection with search, 8 recipes, 4 pages", files: 15, lines: 484 },
-  { name: "IPTU Calculator", desc: "Property tax calculator for São Paulo", files: 8, lines: 290 },
 ];
 
 export default function BuilderPage() {
@@ -142,17 +135,17 @@ export default function BuilderPage() {
               <div className="p-6 font-mono text-sm space-y-3">
                 {[
                   { text: "You: Create a recipe app with grandma's recipes", color: "text-white/60" },
-                  { text: "⚡ Routing to Claude Opus 4.6...", color: "text-synapsis-400" },
+                  { text: "⚡ Routing to AI model...", color: "text-synapsis-400" },
                   { text: "📦 Generating code: Next.js + TypeScript + Tailwind", color: "text-cyan-400" },
-                  { text: "✓ Generated 15 files, 484 lines of code", color: "text-green-400" },
+                  { text: "✓ Generated 15 files", color: "text-green-400" },
                   { text: "", color: "" },
                   { text: "→ Confirm push to GitHub? [Yes]", color: "text-yellow-400" },
-                  { text: "📤 Pushing to cesarezradev/receitas-da-vovo...", color: "text-cyan-400" },
+                  { text: "📤 Pushing to repository...", color: "text-cyan-400" },
                   { text: "✓ Repository created and code pushed", color: "text-green-400" },
                   { text: "", color: "" },
-                  { text: "→ Confirm deploy to Vercel? [Yes]", color: "text-yellow-400" },
-                  { text: "🚀 Vercel detected push, deploying...", color: "text-purple-400" },
-                  { text: "✓ Live at: https://receitas-da-vovo.vercel.app", color: "text-green-400" },
+                  { text: "→ Confirm deploy? [Yes]", color: "text-yellow-400" },
+                  { text: "🚀 Deploying...", color: "text-purple-400" },
+                  { text: "✓ Live at: https://your-app.vercel.app", color: "text-green-400" },
                 ].map((line, i) => (
                   <motion.p
                     key={i}
@@ -168,34 +161,6 @@ export default function BuilderPage() {
               </div>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* Real Examples */}
-      <section className="section-padding">
-        <div className="max-w-5xl mx-auto">
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center mb-4">Real apps built with Builder</h2>
-            <p className="text-white/50 text-center mb-12">These were created during development testing — from prompt to deployed URL.</p>
-          </FadeIn>
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-6">
-            {examples.map((ex, i) => (
-              <StaggerItem key={i}>
-                <motion.div whileHover={{ y: -8 }} className="glass glass-hover rounded-2xl p-6">
-                  <h3 className="text-lg font-semibold mb-2">{ex.name}</h3>
-                  <p className="text-sm text-white/50 mb-4">{ex.desc}</p>
-                  <div className="flex gap-4 text-xs text-white/40">
-                    <span>{ex.files} files</span>
-                    <span>{ex.lines} lines</span>
-                    <span className="text-green-400 flex items-center gap-1">
-                      <CheckCircle2 className="w-3 h-3" /> Deployed
-                    </span>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
         </div>
       </section>
 

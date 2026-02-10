@@ -19,7 +19,7 @@ const footerLinks = {
   Resources: [
     { label: "Documentation", href: "#" },
     { label: "API Reference", href: "#" },
-    { label: "GitHub", href: "https://github.com/Synapsis-bot" },
+    { label: "Docs", href: "#" },
     { label: "Status", href: "#" },
   ],
 };

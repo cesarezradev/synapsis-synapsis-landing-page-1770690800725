@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import {
-  Github, Linkedin, Twitter, Code2, Zap, Brain,
-  Heart, Target, Rocket, Globe, Shield, Users
+  Linkedin, Twitter, Code2, Zap, Brain,
+  Heart, Target, Rocket, Shield
 } from "lucide-react";
 import { FadeIn, ScaleIn, StaggerContainer, StaggerItem, SlideIn } from "@/components/AnimatedSection";
 import { GridBackground } from "@/components/GlowOrb";
@@ -33,51 +33,32 @@ const values = [
 
 const timeline = [
   {
-    date: "Jan 2026",
+    date: "2026",
     title: "Project Inception",
     desc: "Started as a personal AI assistant project. The core idea: what if everyone had their own AI-powered VM?",
   },
   {
-    date: "Feb 2026",
-    title: "Architecture & Research",
-    desc: "Deep research phase: 150+ page master plan, market analysis, competitive landscape, financial projections.",
-  },
-  {
-    date: "Feb 2026",
-    title: "RAG System Built",
-    desc: "Complete RAG system with LanceDB + OpenAI embeddings. Auto-capture, semantic search, 97.3% test pass rate.",
-  },
-  {
-    date: "Feb 2026",
-    title: "Builder Feature Shipped",
-    desc: "3-phase implementation: Deployment API → Backend Routes → App Integration. End-to-end prompt-to-deploy working.",
-  },
-  {
-    date: "Feb 2026",
-    title: "Mobile App Complete",
-    desc: "React Native app with 6 tabs, OAuth integration, real-time streaming, Builder UI, and TestFlight submission.",
+    date: "2026",
+    title: "Platform Development",
+    desc: "Built the complete platform: mobile app, backend infrastructure, AI integration, and deployment pipeline.",
   },
   {
     date: "2026",
-    title: "Public Beta",
-    desc: "Opening up to early adopters. Skills marketplace, team features, and production infrastructure.",
+    title: "Beta Launch",
+    desc: "Opening up to early adopters with a focus on developer experience and privacy.",
+  },
+  {
+    date: "Coming Soon",
+    title: "Public Launch",
+    desc: "Skills marketplace, team features, and enterprise-ready infrastructure.",
   },
 ];
 
 const techStack = [
   { category: "Frontend", items: ["React Native", "Expo", "TypeScript", "Next.js", "Tailwind CSS"] },
-  { category: "Backend", items: ["Node.js", "Express", "TypeScript", "WebSocket", "LanceDB"] },
-  { category: "AI", items: ["OpenClaw", "Claude", "GPT-4o", "Gemini", "OpenAI Embeddings"] },
-  { category: "Infrastructure", items: ["Hetzner Cloud", "Cloudflare", "Vercel", "AWS Lambda", "Supabase"] },
-];
-
-const repos = [
-  { name: "synapsis-app", desc: "React Native mobile application", lang: "TypeScript" },
-  { name: "synapsis-backend", desc: "VM backend (Express + RAG + WebSocket)", lang: "TypeScript" },
-  { name: "openclaw", desc: "AI agent gateway framework", lang: "TypeScript" },
-  { name: "cloud-infrastructure", desc: "VM provisioning & Cloudflare setup", lang: "HCL/Shell" },
-  { name: "database", desc: "Supabase schemas & migrations", lang: "SQL" },
-  { name: "llm-proxy", desc: "Smart model router & billing", lang: "TypeScript" },
+  { category: "Backend", items: ["Node.js", "Express", "TypeScript", "WebSocket", "Vector DB"] },
+  { category: "AI", items: ["Claude", "GPT-4", "Gemini", "Embeddings API"] },
+  { category: "Infrastructure", items: ["Cloud VMs", "CDN", "Serverless", "Auth"] },
 ];
 
 export default function AboutPage() {
@@ -90,7 +71,7 @@ export default function AboutPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <p className="text-sm font-semibold text-synapsis-400 uppercase tracking-widest mb-4">About</p>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              Built by a developer
+              Built by developers
               <br />
               <span className="gradient-text">who wanted more</span>
             </h1>
@@ -154,12 +135,11 @@ export default function AboutPage() {
                 <p>
                   Synapsis was born from a simple frustration: existing AI platforms either charge too much,
                   share your data, or lack real developer tools. So instead of waiting for someone to build
-                  the right thing, Cesar built it himself.
+                  the right thing, he built it himself.
                 </p>
                 <p>
                   The entire platform — mobile app, backend, RAG system, builder, infrastructure — was built
-                  in under two weeks, often pair-programming with Den ⚡, an AI coding partner running on
-                  OpenClaw.
+                  with a focus on developer experience and privacy.
                 </p>
                 <p className="text-white/40 italic">
                   &quot;I wanted an AI that runs on my machine, knows my context, and helps me build things.
@@ -167,73 +147,12 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="flex gap-3 mt-8">
-                <a
-                  href="https://github.com/cesarezradev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg glass glass-hover flex items-center justify-center text-white/40 hover:text-white"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
                 <a href="#" className="w-10 h-10 rounded-lg glass glass-hover flex items-center justify-center text-white/40 hover:text-white">
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-lg glass glass-hover flex items-center justify-center text-white/40 hover:text-white">
                   <Twitter className="w-5 h-5" />
                 </a>
-              </div>
-            </SlideIn>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Partner */}
-      <section className="section-padding relative">
-        <GridBackground />
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
-            <ScaleIn className="shrink-0">
-              <motion.div
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                className="w-72 h-72 rounded-3xl bg-gradient-to-br from-violet-500 to-purple-600 p-1 shadow-2xl shadow-violet-500/30"
-              >
-                <div className="w-full h-full rounded-3xl bg-synapsis-950 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center mx-auto mb-4"
-                    >
-                      <Zap className="w-14 h-14 text-violet-400" />
-                    </motion.div>
-                    <h3 className="text-xl font-bold">Den ⚡</h3>
-                    <p className="text-sm text-white/50 mt-1">AI Coding Partner</p>
-                  </div>
-                </div>
-              </motion.div>
-            </ScaleIn>
-
-            <SlideIn direction="left" className="flex-1">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Meet <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-400">Den ⚡</span>
-              </h2>
-              <div className="space-y-4 text-white/60 leading-relaxed">
-                <p>
-                  Den is the AI coding partner that helped build Synapsis itself. Running on OpenClaw with
-                  Claude Opus, Den handles code reviews, architecture decisions, testing, and implementation.
-                </p>
-                <p>
-                  From the RAG system (97.3% test pass rate) to the Builder feature (3 phases, 22+ tasks),
-                  Den pair-programmed every major component. Sharp, direct, and relentlessly efficient.
-                </p>
-                <p>
-                  The collaboration between Cesar and Den proves the Synapsis thesis: when a developer has
-                  their own AI running on their own machine, with full context and real tools, the speed of
-                  shipping is extraordinary.
-                </p>
-                <p className="text-white/40 italic">
-                  &quot;Built by a human and an AI, together. That&apos;s the future Synapsis enables for everyone.&quot;
-                </p>
               </div>
             </SlideIn>
           </div>
@@ -316,42 +235,6 @@ export default function AboutPage() {
                     ))}
                   </ul>
                 </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Repos */}
-      <section className="section-padding relative">
-        <GridBackground />
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center mb-4">Open Source</h2>
-            <p className="text-white/50 text-center mb-12">6 repositories powering the Synapsis platform</p>
-          </FadeIn>
-
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {repos.map((repo, i) => (
-              <StaggerItem key={i}>
-                <motion.a
-                  href={`https://github.com/Synapsis-bot/${repo.name}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -4 }}
-                  className="glass glass-hover rounded-xl p-5 block"
-                >
-                  <div className="flex items-start gap-3">
-                    <Github className="w-5 h-5 text-white/40 mt-0.5" />
-                    <div>
-                      <h4 className="text-sm font-semibold">{repo.name}</h4>
-                      <p className="text-xs text-white/40 mt-1">{repo.desc}</p>
-                      <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded bg-white/5 text-white/50 font-mono">
-                        {repo.lang}
-                      </span>
-                    </div>
-                  </div>
-                </motion.a>
               </StaggerItem>
             ))}
           </StaggerContainer>
