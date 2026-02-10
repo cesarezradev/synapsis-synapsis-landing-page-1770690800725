@@ -6,7 +6,7 @@ import {
   FileText, Search, Zap, Layers, Terminal, Smartphone,
   Lock, BarChart3, Workflow, Database, Cloud, Eye
 } from "lucide-react";
-import { FadeIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { FadeIn, ScaleIn, SlideIn, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { GridBackground } from "@/components/GlowOrb";
 
 const mainFeatures = [
